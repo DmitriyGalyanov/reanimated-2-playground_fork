@@ -1,13 +1,13 @@
+import React from 'react';
 import Animated, {
+  Easing,
+  useAnimatedStyle,
   useSharedValue,
   withTiming,
-  useAnimatedStyle,
-  Easing,
 } from 'react-native-reanimated';
-import {View, Button} from 'react-native';
-import React from 'react';
+import { View, Button } from 'react-native';
 
-export default function AnimatedStyleUpdateExample(props) {
+export default function PlaygroundExample() {
   const randomWidth = useSharedValue(10);
 
   const config = {
@@ -26,13 +26,10 @@ export default function AnimatedStyleUpdateExample(props) {
       style={{
         flex: 1,
         flexDirection: 'column',
-      }}>
-      <Animated.View
-        style={[
-          {width: 100, height: 80, backgroundColor: 'black', margin: 30},
-          style,
-        ]}
-      />
+        backgroundColor: 'yellow',
+      }}
+    >
+      <Animated.View style={[{ width: 100, height: 80 }, style]} />
       <Button
         title="toggle"
         onPress={() => {
