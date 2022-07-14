@@ -13,6 +13,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
+    "babel-plugin-module-resolver": "^4.1.0",
     "expo-asset": "^8.2.0",
     "jsc-android": "^250230.2.1",
     "react": "17.0.2",
