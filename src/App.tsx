@@ -1,15 +1,12 @@
 import React from 'react';
-
-import PlaygroundExample from 'components/PlaygroundExample';
 import { SafeAreaView } from 'react-native';
 
-// import  './components/DropdownView/index';
+import InitialScreen from 'navigation/InitialScreen';
 
 const App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <PlaygroundExample />
-      {/*<DropdownView />*/}
+      <InitialScreen />
     </SafeAreaView>
   );
 };
