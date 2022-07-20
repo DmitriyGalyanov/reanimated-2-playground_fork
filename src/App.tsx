@@ -1,13 +1,16 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 
+import { commonStyles } from 'shared';
 import InitialScreen from 'navigation/InitialScreen';
 
 const App = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <InitialScreen />
-    </SafeAreaView>
+    <View style={commonStyles.screenWrap}>
+      <SafeAreaView style={commonStyles.screenWrap}>
+        <InitialScreen />
+      </SafeAreaView>
+    </View>
   );
 };
 
