@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageProps } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import sparksImg from '/features/TestAnim/assets/sparks.png';
+import sparksImg from 'features/TestAnim/assets/sparks.png';
 
 interface ISparksImageProps extends Omit<ImageProps, 'source'> {}
 
