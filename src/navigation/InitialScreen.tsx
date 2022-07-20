@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import {
-  Modal,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+import { commonStyles } from 'shared';
 
 import DropdownView, { ContainerStateIdEnum } from 'components/DropdownView';
 import SlidingView from 'components/SlidingView';
@@ -62,33 +57,21 @@ const InitialScreen = () => {
 
   // TestAnim
   const renderTestAnim = () => (
-    <Modal
-      visible={true}
-      animationType={'slide'}
-      presentationStyle={'fullScreen'}
-    >
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flex: 1, backgroundColor: 'yellow' }}>
-          <TestAnim />
-        </View>
-      </SafeAreaView>
-    </Modal>
+    <View style={{ flex: 1, backgroundColor: 'gray', paddingTop: 40 }}>
+      <TestAnim />
+    </View>
   );
 
   return (
-    <SafeAreaView style={styles.wrap}>
-      <>
-        {/*{renderSlidingViewBlock()}*/}
-        {/*{renderDropdownView()}*/}
-        {renderTestAnim()}
-      </>
-    </SafeAreaView>
+    <View style={commonStyles.screenWrap}>
+      {/*{renderSlidingViewBlock()}*/}
+      {/*{renderDropdownView()}*/}
+      {renderTestAnim()}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrap: { flex: 1, paddingHorizontal: 20 },
-
   toggleSlidingViewButtonWrap: {
     marginTop: 50,
     backgroundColor: 'lightblue',
@@ -107,7 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     padding: 16,
     marginBottom: 12,
-    // flexShrink: 1,
   },
 
   slidingViewContentWrap: {
@@ -118,7 +100,6 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 15,
-    // lineHeight: 24,
     textAlign: 'center',
     textAlignVertical: 'center',
     flexWrap: 'wrap',
@@ -126,14 +107,11 @@ const styles = StyleSheet.create({
 
   imageWrap: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: 'green',
   },
   image: {
     width: 200,
     aspectRatio: 1,
-    // alignSelf: 'center'
   },
 });
 
