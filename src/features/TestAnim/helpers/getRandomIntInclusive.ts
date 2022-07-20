@@ -6,7 +6,6 @@ const getRandomIntInclusive = (min: number, max: number) => {
   const localMin = Math.ceil(min);
   const localMax = Math.floor(max);
   const x = Math.floor(Math.random() * (localMax - localMin + 1)) + localMin;
-  console.log({ x });
   return x;
 };
 
