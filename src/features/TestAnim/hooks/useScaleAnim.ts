@@ -6,8 +6,8 @@ import {
 } from 'react-native-reanimated';
 
 import {
-  DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-  MAIN_SPHERE_ANIM_EASING,
+  MAIN_SPHERE_ANIM_DURATION,
+  DEFAULT_ANIM_EASING,
 } from 'features/TestAnim/consts';
 
 const useScaleAnim = () => {
@@ -21,8 +21,8 @@ const useScaleAnim = () => {
     ([
       toValue,
       {
-        duration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-        easing = MAIN_SPHERE_ANIM_EASING,
+        duration = MAIN_SPHERE_ANIM_DURATION,
+        easing = DEFAULT_ANIM_EASING,
       } = {},
       callback,
     ]: Parameters<typeof withTiming>) => {

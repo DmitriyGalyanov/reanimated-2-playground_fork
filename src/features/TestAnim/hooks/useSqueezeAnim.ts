@@ -7,8 +7,8 @@ import {
 } from 'react-native-reanimated';
 
 import {
-  DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
-  MAIN_SPHERE_ANIM_EASING,
+  SINGLE_SQUEEZE_ANIM_DURATION,
+  DEFAULT_ANIM_EASING,
 } from 'features/TestAnim/consts';
 import {
   getAxisAnimsAmount,
@@ -28,17 +28,19 @@ const useSqueezeAnim = () => {
       // todo how to call withRepeat with random values on every animation?
       const createSequence = () => {
         const sequence = [...Array(squeezesAmount)].map(() =>
-          withTiming(getRandomIntInclusive(90, 97) / 100, {
-            duration: DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
-            easing: MAIN_SPHERE_ANIM_EASING,
+          withTiming(getRandomIntInclusive(85, 97) / 100, {
+            duration: SINGLE_SQUEEZE_ANIM_DURATION,
+            easing: DEFAULT_ANIM_EASING,
           }),
         );
         sequence.push(
-          withTiming(1, { duration: DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION }),
+          withTiming(1, { duration: SINGLE_SQUEEZE_ANIM_DURATION }),
         );
         return sequence;
       };
+      // @ts-ignore | it works as expected
       scaleX.value = withSequence(...createSequence());
+      // @ts-ignore | it works as expected
       scaleY.value = withSequence(...createSequence());
     },
     [scaleX, scaleY],

@@ -8,7 +8,7 @@ import {
   WithTimingConfig,
 } from 'react-native-reanimated';
 
-import { DEFAULT_MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
+import { MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
 
 type TUseOpactiyAnimArgs = { initOpacity?: number };
 
@@ -20,10 +20,7 @@ const useOpacityAnim = ({ initOpacity = 1 }: TUseOpactiyAnimArgs = {}) => {
   const _animateOpacity = useCallback(
     ([
       toValue,
-      {
-        duration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-        easing = Easing.quad,
-      } = {},
+      { duration = MAIN_SPHERE_ANIM_DURATION, easing = Easing.quad } = {},
       callback,
     ]: Parameters<typeof withTiming>) => {
       opacity.value = withTiming(toValue, { duration, easing }, callback);
