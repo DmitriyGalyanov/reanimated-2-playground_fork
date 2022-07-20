@@ -1,12 +1,16 @@
+import { useCallback } from 'react';
 import {
   useAnimatedStyle,
   useSharedValue,
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import { getRandomIntInclusive } from 'features/TestAnim/helpers';
+
 import { DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION } from 'features/TestAnim/consts';
-import { useCallback } from 'react';
+import {
+  getAxisAnimsAmount,
+  getRandomIntInclusive,
+} from 'features/TestAnim/helpers';
 
 const useSqueezeAnim = () => {
   const scaleX = useSharedValue(1);
@@ -17,7 +21,7 @@ const useSqueezeAnim = () => {
   }));
 
   const runSqueezeAnim = useCallback(
-    (squeezesAmount: number = 10) => {
+    (squeezesAmount: number = getAxisAnimsAmount()) => {
       // todo how to call withRepeat with random values on every animation?
       const createSequence = () => {
         const sequence = [...Array(squeezesAmount)].map(() =>
