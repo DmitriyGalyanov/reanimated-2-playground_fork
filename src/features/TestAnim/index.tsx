@@ -2,8 +2,18 @@ import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { INIT_SPHERE_SIZE, WINDOW_HEIGHT } from 'features/TestAnim/consts';
-import { useSqueezeAnim, useScaleAnim } from 'features/TestAnim/hooks';
+import {
+  INIT_SPHERE_SIZE,
+  MAIN_SPHERE_COMPRESSED_SCALE,
+  MAIN_SPHERE_EXPANDED_SCALE,
+  DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+  ViewLayersEnum,
+} from 'features/TestAnim/consts';
+import {
+  useSqueezeAnim,
+  useScaleAnim,
+  useOpacityAnim,
+} from 'features/TestAnim/hooks';
 import SphereImage from 'features/TestAnim/SphereImage';
 
 interface ITestAnimProps {}
@@ -19,8 +29,18 @@ const TestAnim: React.FC<ITestAnimProps> = () => {
     runSqueezeAnim: runMainSphereSqueezeAnim,
   } = useSqueezeAnim();
 
-  const runMainSphereAnimation = (toScale: number) => {
-    animateMainSphereScale({ toScale });
+  const expandMainSphere = (
+    duration: number = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+  ) => {
+    animateMainSphereScale([MAIN_SPHERE_EXPANDED_SCALE, { duration }]);
+
+    runMainSphereSqueezeAnim();
+  };
+  const compressMainSphere = (
+    duration: number = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+  ) => {
+    animateMainSphereScale([MAIN_SPHERE_COMPRESSED_SCALE, { duration }]);
+
     runMainSphereSqueezeAnim();
   };
 
