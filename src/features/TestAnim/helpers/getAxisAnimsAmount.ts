@@ -1,11 +1,11 @@
 import {
-  DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-  DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
+  MAIN_SPHERE_ANIM_DURATION,
+  SINGLE_SQUEEZE_ANIM_DURATION,
 } from 'features/TestAnim/consts';
 
 const getAxisAnimsAmount = ({
-  wholeAnimDuration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-  axisAnimDuration = DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
+  wholeAnimDuration = MAIN_SPHERE_ANIM_DURATION,
+  axisAnimDuration = SINGLE_SQUEEZE_ANIM_DURATION,
 }: {
   wholeAnimDuration?: number;
   axisAnimDuration?: number;
