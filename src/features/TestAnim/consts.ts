@@ -4,9 +4,10 @@ export const INIT_SPHERE_SIZE = 40;
 export const MAIN_SPHERE_COMPRESSED_SCALE = 1;
 export const MAIN_SPHERE_EXPANDED_SCALE = 5;
 
-export const DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION = 100;
-export const DEFAULT_MAIN_SPHERE_ANIM_DURATION = 5000;
-export const MAIN_SPHERE_ANIM_EASING = Easing.quad;
+export const MAIN_SPHERE_ANIM_DURATION = 5000;
+export const DEFAULT_ANIM_EASING = Easing.quad;
+
+export const SINGLE_SQUEEZE_ANIM_DURATION = 100;
 
 /**
  * { zIndex: ViewLayersEnum.second } overlaps { zIndex: ViewLayersEnum.fourth }
