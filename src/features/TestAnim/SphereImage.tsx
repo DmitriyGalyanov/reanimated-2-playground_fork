@@ -6,20 +6,18 @@ import sphereImg from './assets/sphere.png';
 
 interface ISphereImageProps extends Omit<ImageProps, 'source' | 'style'> {
   style: StyleProp<Omit<ImageStyle, 'width' | 'height'>>;
-  width: number;
-  height: number;
+  size: number;
 }
 
 const SphereImage: React.FC<ISphereImageProps> = ({
   style,
-  width,
-  height,
+  size,
   ...props
 }) => {
   return (
     <Animated.Image
       source={sphereImg}
-      style={[style, { width, height }]}
+      style={[style, { width: size, height: size }]}
       {...props}
     />
   );
