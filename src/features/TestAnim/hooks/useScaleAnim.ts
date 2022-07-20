@@ -5,7 +5,10 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 
-import { DEFAULT_MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
+import {
+  DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+  MAIN_SPHERE_ANIM_EASING,
+} from 'features/TestAnim/consts';
 
 const useScaleAnim = () => {
   const scale = useSharedValue(1);
@@ -15,14 +18,15 @@ const useScaleAnim = () => {
   }));
 
   const animateScale = useCallback(
-    ({
-      toScale,
-      duration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
-    }: {
-      toScale: number;
-      duration?: number;
-    }) => {
-      scale.value = withTiming(toScale, { duration });
+    ([
+      toValue,
+      {
+        duration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+        easing = MAIN_SPHERE_ANIM_EASING,
+      } = {},
+      callback,
+    ]: Parameters<typeof withTiming>) => {
+      scale.value = withTiming(toValue, { duration, easing }, callback);
     },
     [scale],
   );

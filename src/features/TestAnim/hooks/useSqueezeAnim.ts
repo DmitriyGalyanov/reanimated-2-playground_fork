@@ -6,7 +6,10 @@ import {
   withTiming,
 } from 'react-native-reanimated';
 
-import { DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION } from 'features/TestAnim/consts';
+import {
+  DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
+  MAIN_SPHERE_ANIM_EASING,
+} from 'features/TestAnim/consts';
 import {
   getAxisAnimsAmount,
   getRandomIntInclusive,
@@ -27,6 +30,7 @@ const useSqueezeAnim = () => {
         const sequence = [...Array(squeezesAmount)].map(() =>
           withTiming(getRandomIntInclusive(90, 97) / 100, {
             duration: DEFAULT_SINGLE_SQUEEZE_ANIM_DURATION,
+            easing: MAIN_SPHERE_ANIM_EASING,
           }),
         );
         sequence.push(

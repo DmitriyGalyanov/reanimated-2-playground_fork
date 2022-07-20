@@ -1,9 +1,14 @@
 import { useCallback } from 'react';
 import {
+  AnimationCallback,
+  Easing,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
+  WithTimingConfig,
 } from 'react-native-reanimated';
+
+import { DEFAULT_MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
 
 type TUseOpactiyAnimArgs = { initOpacity?: number };
 
@@ -13,25 +18,44 @@ const useOpacityAnim = ({ initOpacity = 1 }: TUseOpactiyAnimArgs = {}) => {
   const animatedStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
 
   const _animateOpacity = useCallback(
-    ({ toValue, duration }: { toValue: number; duration?: number }) => {
-      if (toValue === undefined || duration === undefined) {
-        return;
-      }
-
-      opacity.value = withTiming(toValue, { duration });
+    ([
+      toValue,
+      {
+        duration = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
+        easing = Easing.quad,
+      } = {},
+      callback,
+    ]: Parameters<typeof withTiming>) => {
+      opacity.value = withTiming(toValue, { duration, easing }, callback);
     },
     [opacity],
   );
 
   const hide = useCallback(
-    (duration: number) => {
-      _animateOpacity({ toValue: 0, duration });
+    ({
+      duration,
+      easing,
+      callback,
+    }: {
+      duration: WithTimingConfig['duration'];
+      easing?: WithTimingConfig['easing'];
+      callback?: AnimationCallback;
+    }) => {
+      _animateOpacity([0, { duration, easing }, callback]);
     },
     [_animateOpacity],
   );
   const show = useCallback(
-    (duration: number) => {
-      _animateOpacity({ toValue: 1, duration });
+    ({
+      duration,
+      easing,
+      callback,
+    }: {
+      duration: WithTimingConfig['duration'];
+      easing?: WithTimingConfig['easing'];
+      callback?: AnimationCallback;
+    }) => {
+      _animateOpacity([1, { duration, easing }, callback]);
     },
     [_animateOpacity],
   );
