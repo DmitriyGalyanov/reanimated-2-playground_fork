@@ -1,9 +1,10 @@
+import { useCallback } from 'react';
 import {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useCallback } from 'react';
+
 import { DEFAULT_MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
 
 const useScaleAnim = () => {
@@ -26,10 +27,7 @@ const useScaleAnim = () => {
     [scale],
   );
 
-  return {
-    animatedStyle,
-    animateScale,
-  };
+  return { animatedStyle, animateScale };
 };
 
 export default useScaleAnim;
