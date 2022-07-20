@@ -1,4 +1,5 @@
 import useSqueezeAnim from './useSqueezeAnim';
 import useScaleAnim from './useScaleAnim';
+import useOpacityAnim from './useOpacityAnim';
 
-export { useSqueezeAnim, useScaleAnim };
+export { useSqueezeAnim, useScaleAnim, useOpacityAnim };
