@@ -15,6 +15,7 @@ import {
   useOpacityAnim,
 } from 'features/TestAnim/hooks';
 import SphereImage from 'features/TestAnim/SphereImage';
+import SparksImage from 'features/TestAnim/SparksImage';
 
 interface ITestAnimProps {}
 
@@ -29,51 +30,91 @@ const TestAnim: React.FC<ITestAnimProps> = () => {
     runSqueezeAnim: runMainSphereSqueezeAnim,
   } = useSqueezeAnim();
 
+  const {
+    animatedStyle: sparksOpacityAnimatedStyle,
+    hide: hideSparks,
+    show: showSparks,
+  } = useOpacityAnim({ initOpacity: 0 });
+
+  const {
+    animatedStyle: splashOpacityAnimatedStyle,
+    hide: hideSplash,
+    show: showSplash,
+  } = useOpacityAnim({ initOpacity: 0 });
+
   const expandMainSphere = (
     duration: number = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
   ) => {
     animateMainSphereScale([MAIN_SPHERE_EXPANDED_SCALE, { duration }]);
-
+    showSparks({ duration });
+    showSplash({ duration });
     runMainSphereSqueezeAnim();
   };
   const compressMainSphere = (
     duration: number = DEFAULT_MAIN_SPHERE_ANIM_DURATION,
   ) => {
     animateMainSphereScale([MAIN_SPHERE_COMPRESSED_SCALE, { duration }]);
-
+    hideSparks({ duration });
+    hideSplash({ duration });
     runMainSphereSqueezeAnim();
   };
 
   return (
-    <View>
-      <Animated.View style={[mainSphereScaleAnimatedStyle, styles.mainSphere]}>
-        <SphereImage
-          style={[mainSphereSqueezeAnimatedStyle]}
-          width={INIT_SPHERE_SIZE}
-          height={INIT_SPHERE_SIZE}
+    <>
+      <View style={styles.buttonsBlock}>
+        <Button
+          title={'runMainSphereSqueezeAnim'}
+          onPress={() => runMainSphereSqueezeAnim()}
         />
-      </Animated.View>
-      <Button
-        title={'runMainSphereSqueezeAnim'}
-        onPress={() => runMainSphereSqueezeAnim()}
-      />
-      <Button
-        title={'setMainSphereScaleTo 5'}
-        onPress={() => runMainSphereAnimation(5)}
-      />
-      <Button
-        title={'setMainSphereScaleTo 1'}
-        onPress={() => runMainSphereAnimation(1)}
-      />
-    </View>
+        <Button title={'expandMainSphere'} onPress={() => expandMainSphere()} />
+        <Button
+          title={'compressMainSphere'}
+          onPress={() => compressMainSphere()}
+        />
+      </View>
+      <View style={styles.animatedItemsContainer}>
+        <Animated.View
+          style={[styles.mainSphere, mainSphereScaleAnimatedStyle]}
+        >
+          <SphereImage
+            style={mainSphereSqueezeAnimatedStyle}
+            width={INIT_SPHERE_SIZE}
+            height={INIT_SPHERE_SIZE}
+          />
+        </Animated.View>
+        <SparksImage style={[styles.sparks, sparksOpacityAnimatedStyle]} />
+        <Animated.View style={[styles.splash, splashOpacityAnimatedStyle]} />
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  buttonsBlock: { zIndex: ViewLayersEnum.topMost },
+
+  animatedItemsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   mainSphere: {
     position: 'absolute',
-    top: WINDOW_HEIGHT / 2,
-    alignSelf: 'center',
+    zIndex: ViewLayersEnum.second,
+  },
+
+  sparks: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    zIndex: ViewLayersEnum.third,
+  },
+
+  splash: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white',
+    zIndex: ViewLayersEnum.first,
   },
 });
 
