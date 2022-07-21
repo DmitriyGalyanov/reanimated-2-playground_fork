@@ -8,7 +8,7 @@ import {
   WithTimingConfig,
 } from 'react-native-reanimated';
 
-import { MAIN_SPHERE_ANIM_DURATION } from 'features/TestAnim/consts';
+import { MAIN_SPHERE_ANIM_DURATION } from 'features/sphereAnim/consts';
 
 type TUseOpactiyAnimArgs = { initOpacity?: number };
 

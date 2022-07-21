@@ -8,22 +8,22 @@ import {
   MAIN_SPHERE_EXPANDED_SCALE,
   MAIN_SPHERE_ANIM_DURATION,
   viewLayers,
-} from 'features/TestAnim/consts';
+} from 'features/sphereAnim/consts';
 import {
   useSqueezeAnim,
   useScaleAnim,
   useOpacityAnim,
-} from 'features/TestAnim/hooks';
-import SphereImage from 'features/TestAnim/SphereImage';
-import SparksImage from 'features/TestAnim/SparksImage';
+} from 'features/sphereAnim/hooks';
+import SphereImage from 'features/sphereAnim/SphereImage';
+import SparksImage from 'features/sphereAnim/SparksImage';
 import CenterableSpheres, {
   TCenterableSpheresRef,
-} from 'features/TestAnim/CenterableSpheres';
+} from 'features/sphereAnim/CenterableSpheres';
 import { buttonTextColor } from 'shared/commonStyles';
 
-interface ITestAnimProps {}
+interface ISphereAnimProps {}
 
-const TestAnim: React.FC<ITestAnimProps> = () => {
+const SphereAnim: React.FC<ISphereAnimProps> = () => {
   const {
     animatedStyle: mainSphereScaleAnimatedStyle,
     animateScale: animateMainSphereScale,
@@ -42,6 +42,7 @@ const TestAnim: React.FC<ITestAnimProps> = () => {
 
   const flyingSpheresRef = useRef<TCenterableSpheresRef>(null);
 
+  const showSparksTimeoutId = useRef();
   const expandMainSphere = (duration: number = MAIN_SPHERE_ANIM_DURATION) => {
     animateMainSphereScale([MAIN_SPHERE_EXPANDED_SCALE, { duration }]);
     setTimeout(() => {
@@ -50,11 +51,10 @@ const TestAnim: React.FC<ITestAnimProps> = () => {
     flyingSpheresRef.current?.centerSpheres();
     runMainSphereSqueezeAnim();
   };
-  const compressMainSphere = (duration: number = MAIN_SPHERE_ANIM_DURATION) => {
+  const compressMainSphere = (duration: number = 0) => {
     animateMainSphereScale([MAIN_SPHERE_COMPRESSED_SCALE, { duration }]);
     hideSparks({ duration: 0 });
     flyingSpheresRef.current?.decenterSpheres();
-    runMainSphereSqueezeAnim();
   };
 
   return (
@@ -107,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TestAnim;
+export default SphereAnim;

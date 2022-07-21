@@ -8,7 +8,7 @@ import {
 import {
   MAIN_SPHERE_ANIM_DURATION,
   DEFAULT_ANIM_EASING,
-} from 'features/TestAnim/consts';
+} from 'features/sphereAnim/consts';
 
 const useScaleAnim = () => {
   const scale = useSharedValue(1);

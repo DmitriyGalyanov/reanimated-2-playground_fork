@@ -1,7 +1,7 @@
 import {
   MAIN_SPHERE_ANIM_DURATION,
   SINGLE_SQUEEZE_ANIM_DURATION,
-} from 'features/TestAnim/consts';
+} from 'features/sphereAnim/consts';
 
 const getAxisAnimsAmount = ({
   wholeAnimDuration = MAIN_SPHERE_ANIM_DURATION,

@@ -7,10 +7,10 @@ import {
   COLLIDING_SPHERES_CHUNK_ANIM_DURATION,
   COLLIDING_SPHERES_IN_RANGE_AMOUNT,
   viewLayers,
-} from 'features/TestAnim/consts';
-import { TViewCenter } from 'features/TestAnim/CenterableSpheres/types';
-import CenterableSphere from 'features/TestAnim/CenterableSpheres/CenterableSphere';
-import createSpheresPositions from 'features/TestAnim/CenterableSpheres/createSpheresPositions';
+} from 'features/sphereAnim/consts';
+import { TViewCenter } from 'features/sphereAnim/CenterableSpheres/types';
+import CenterableSphere from 'features/sphereAnim/CenterableSpheres/CenterableSphere';
+import createSpheresPositions from 'features/sphereAnim/CenterableSpheres/createSpheresPositions';
 import { buttonTextColor } from 'shared/commonStyles';
 
 export type TCenterableSpheresRef = {

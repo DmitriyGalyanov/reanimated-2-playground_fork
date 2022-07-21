@@ -5,7 +5,7 @@ import { commonStyles } from 'shared';
 
 import DropdownView, { ContainerStateIdEnum } from 'components/DropdownView';
 import SlidingView from 'components/SlidingView';
-import TestAnim from 'features/TestAnim';
+import SphereAnim from 'features/sphereAnim';
 
 const InitialScreen = () => {
   // SlidingView
@@ -55,10 +55,10 @@ const InitialScreen = () => {
     </DropdownView>
   );
 
-  // TestAnim
+  // SphereAnim
   const renderTestAnim = () => (
     <View style={{ flex: 1, backgroundColor: 'gray', paddingTop: 40 }}>
-      <TestAnim />
+      <SphereAnim />
     </View>
   );
 

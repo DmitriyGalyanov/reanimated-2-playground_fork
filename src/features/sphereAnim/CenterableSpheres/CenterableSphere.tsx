@@ -12,9 +12,9 @@ import {
   COLLIDING_SPHERES_EASING,
   INIT_SPHERE_SIZE,
   viewLayers,
-} from 'features/TestAnim/consts';
-import { TViewCenter } from 'features/TestAnim/CenterableSpheres/types';
-import SphereImage from 'features/TestAnim/SphereImage';
+} from 'features/sphereAnim/consts';
+import { TViewCenter } from 'features/sphereAnim/CenterableSpheres/types';
+import SphereImage from 'features/sphereAnim/SphereImage';
 
 interface ICenterableSphereProps {
   position: {

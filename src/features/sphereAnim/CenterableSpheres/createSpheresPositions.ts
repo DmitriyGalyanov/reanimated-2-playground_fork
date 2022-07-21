@@ -2,9 +2,9 @@ import {
   COLLIDING_SPHERES_AMOUNT,
   COLLIDING_SPHERES_MIN_OFFSET,
   COLLIDING_SPHERES_OFFSET_RANGE,
-} from 'features/TestAnim/consts';
-import { getRandomIntInclusive } from 'features/TestAnim/helpers';
-import { TViewCenter } from 'features/TestAnim/CenterableSpheres/types';
+} from 'features/sphereAnim/consts';
+import { getRandomIntInclusive } from 'features/sphereAnim/helpers';
+import { TViewCenter } from 'features/sphereAnim/CenterableSpheres/types';
 
 export default ({
   amount = COLLIDING_SPHERES_AMOUNT,

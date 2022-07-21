@@ -9,11 +9,11 @@ import {
 import {
   SINGLE_SQUEEZE_ANIM_DURATION,
   DEFAULT_ANIM_EASING,
-} from 'features/TestAnim/consts';
+} from 'features/sphereAnim/consts';
 import {
   getAxisAnimsAmount,
   getRandomIntInclusive,
-} from 'features/TestAnim/helpers';
+} from 'features/sphereAnim/helpers';
 
 const useSqueezeAnim = () => {
   const scaleX = useSharedValue(1);
