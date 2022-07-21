@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import {
+  cancelAnimation,
   useAnimatedStyle,
   useSharedValue,
   withSequence,
@@ -45,8 +46,12 @@ const useSqueezeAnim = () => {
     },
     [scaleX, scaleY],
   );
+  const stopSqueezeAnim = useCallback(() => {
+    cancelAnimation(scaleX);
+    cancelAnimation(scaleY);
+  }, [scaleX, scaleY]);
 
-  return { animatedStyle, runSqueezeAnim };
+  return { animatedStyle, runSqueezeAnim, stopSqueezeAnim };
 };
 
 export default useSqueezeAnim;
