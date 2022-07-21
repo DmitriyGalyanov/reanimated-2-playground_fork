@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { runOnJS } from 'react-native-reanimated';
 
 import {
   INIT_SPHERE_SIZE,
@@ -32,6 +32,7 @@ const SphereAnim: React.FC<ISphereAnimProps> = () => {
   const {
     animatedStyle: mainSphereSqueezeAnimatedStyle,
     runSqueezeAnim: runMainSphereSqueezeAnim,
+    stopSqueezeAnim: stopMainSphereSqueezeAnim,
   } = useSqueezeAnim();
 
   const {
@@ -42,12 +43,21 @@ const SphereAnim: React.FC<ISphereAnimProps> = () => {
 
   const flyingSpheresRef = useRef<TCenterableSpheresRef>(null);
 
-  const showSparksTimeoutId = useRef();
   const expandMainSphere = (duration: number = MAIN_SPHERE_ANIM_DURATION) => {
-    animateMainSphereScale([MAIN_SPHERE_EXPANDED_SCALE, { duration }]);
-    setTimeout(() => {
+    const showSparksTimeoutId = setTimeout(() => {
       showSparks({ duration: MAIN_SPHERE_ANIM_DURATION / 2 });
     }, MAIN_SPHERE_ANIM_DURATION / 2);
+    animateMainSphereScale([
+      MAIN_SPHERE_EXPANDED_SCALE,
+      { duration },
+      (finished) => {
+        'worklet';
+        if (!finished) {
+          runOnJS(clearTimeout)(showSparksTimeoutId);
+          runOnJS(stopMainSphereSqueezeAnim)();
+        }
+      },
+    ]);
     flyingSpheresRef.current?.centerSpheres();
     runMainSphereSqueezeAnim();
   };
