@@ -83,12 +83,12 @@ const CenterableSphere: React.FC<ICenterableSphereProps> = ({
       size={INIT_SPHERE_SIZE}
     />
   );
-  // return shouldFlyToCenter ? (
-  //   <SphereImage
-  //     style={[styles.sphere, positionAnimatedStyle]}
-  //     size={INIT_SPHERE_SIZE}
-  //   />
-  // ) : null;
+  return shouldFlyToCenter ? (
+    <SphereImage
+      style={[styles.sphere, positionAnimatedStyle]}
+      size={INIT_SPHERE_SIZE}
+    />
+  ) : null;
 };
 
 const styles = StyleSheet.create({

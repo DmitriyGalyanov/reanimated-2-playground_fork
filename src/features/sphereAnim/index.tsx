@@ -45,7 +45,7 @@ const SphereAnim: React.FC<ISphereAnimProps> = () => {
 
   const expandMainSphere = (duration: number = MAIN_SPHERE_ANIM_DURATION) => {
     const showSparksTimeoutId = setTimeout(() => {
-      showSparks({ duration: MAIN_SPHERE_ANIM_DURATION / 2 });
+      showSparks({ duration: MAIN_SPHERE_ANIM_DURATION / 4 });
     }, MAIN_SPHERE_ANIM_DURATION / 2);
     animateMainSphereScale([
       MAIN_SPHERE_EXPANDED_SCALE,

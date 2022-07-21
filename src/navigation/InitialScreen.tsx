@@ -56,17 +56,13 @@ const InitialScreen = () => {
   );
 
   // SphereAnim
-  const renderTestAnim = () => (
-    <View style={{ flex: 1, backgroundColor: 'gray', paddingTop: 40 }}>
-      <SphereAnim />
-    </View>
-  );
+  const renderSphereAnim = () => <SphereAnim />;
 
   return (
     <View style={commonStyles.screenWrap}>
       {/*{renderSlidingViewBlock()}*/}
       {/*{renderDropdownView()}*/}
-      {renderTestAnim()}
+      {renderSphereAnim()}
     </View>
   );
 };

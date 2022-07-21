@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  screenWrap: { flex: 1, backgroundColor: 'gray' },
+  screenWrap: { flex: 1, backgroundColor: 'pink' },
 
   flex1: { flex: 1 },
 
